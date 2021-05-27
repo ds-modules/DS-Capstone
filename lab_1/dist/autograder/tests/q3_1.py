@@ -1,0 +1,11 @@
+test = {   'name': 'q3_1',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert len(pebbles.columns) == 2\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert len(pebbles.index) == 1\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert pebbles["sugars"].iloc[0] == 12\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert pebbles["calories"].iloc[0] == 110\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(pebbles) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

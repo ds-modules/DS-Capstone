@@ -1,0 +1,11 @@
+test = {   'name': 'q4',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert len(serving.index) == 77\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert len(serving.columns) == 5\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert np.isclose(12.121212121, serving.iloc[0,1])\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert np.isclose(27.27272727, serving.iloc[2, 2])\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(serving) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

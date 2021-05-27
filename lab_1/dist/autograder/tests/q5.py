@@ -1,0 +1,10 @@
+test = {   'name': 'q5',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert len(cereal.columns) == 17\n', 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert 'shashank_ratings' in cereal.columns\n", 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert 'rating' in cereal.columns\n", 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(cereal) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

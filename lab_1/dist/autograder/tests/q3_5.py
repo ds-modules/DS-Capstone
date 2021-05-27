@@ -1,0 +1,10 @@
+test = {   'name': 'q3_5',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': ">>> assert 'vitamins' not in cereal_drop.columns\n", 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert len(cereal_drop.columns) == 5\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert len(cereal_drop.index) == 77\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(cereal_drop) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

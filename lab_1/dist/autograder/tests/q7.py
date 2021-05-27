@@ -1,0 +1,11 @@
+test = {   'name': 'q7',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert "Cap\'n\'Crunch" in pivot_df.iloc[0,0]\n', 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert 'Golden Grahams' in pivot_df.iloc[0,1]\n", 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert 'Life' in pivot_df.iloc[3, 0]\n", 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert 'Special K' in pivot_df.iloc[5,4]\n", 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(pivot_df) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

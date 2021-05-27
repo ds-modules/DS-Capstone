@@ -1,0 +1,11 @@
+test = {   'name': 'q6',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert len(mean_sugar_per_rating.columns) == 1\n', 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert 'mean_sugars' in mean_sugar_per_rating.columns\n", 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert np.isclose(7, mean_sugar_per_rating.iloc[0,0])\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert np.isclose(7.4117647, mean_sugar_per_rating.iloc[2,0])\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(mean_sugar_per_rating) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

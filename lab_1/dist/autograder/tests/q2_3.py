@@ -1,0 +1,11 @@
+test = {   'name': 'q2_3',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert len(first_twenty.columns) == 16\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert len(first_twenty.index) == 20\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert first_twenty.iloc[10,10] == 35\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert first_twenty.iloc[1,4] == 3\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(first_twenty) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

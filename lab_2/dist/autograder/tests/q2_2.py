@@ -1,0 +1,10 @@
+test = {   'name': 'q2_2',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert controversial_vids.iloc[0, 3] == 25\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert controversial_vids.iloc[1, 3] == 25\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert controversial_vids.iloc[2, 3] == 24\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert np.isclose(controversial_vids.iloc[2, 5], 0.723739286426151)\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}
