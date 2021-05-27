@@ -1,0 +1,11 @@
+test = {   'name': 'q2_5',
+    'points': 1,
+    'suites': [   {   'cases': [   {   'code': '>>> assert np.isclose(grouped_channels.sort_values("controversy_metric", ascending = False).iloc[0, 2], 0.7909471005271769)\n',
+                                       'hidden': False,
+                                       'locked': False},
+                                   {'code': '>>> assert grouped_channels.sort_values("controversy_metric", ascending = False).iloc[1, 1] == 4508\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert grouped_channels.sort_values("controversy_metric", ascending = False).iloc[2, 0] == 768\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

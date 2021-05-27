@@ -1,0 +1,10 @@
+test = {   'name': 'q3_6',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert len(cereal_drop.index) == 78\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert cereal_drop.iloc[77, 0] == "Honey O\'s"\n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert cereal_drop.iloc[5, 0] == "Apple Cinnamon Cheerios";\n>>> \n', 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(cereal_drop) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}

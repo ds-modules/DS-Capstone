@@ -1,0 +1,1048 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{covid19\_vacc\_prog}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{World Vaccination Progress
+EDA}\label{world-vaccination-progress-eda}
+
+Okay, we have a vaccine; that's exciting news! But how are we doing? Is
+the vaccination progressing quick enough? This lecture, we will explore
+a dataset downloaded from \texttt{kaggle}, you can follow
+\href{https://www.kaggle.com/gpreda/covid-world-vaccination-progress}{this
+link} to learn more about this dataset. The dataset is collected by the
+organization \href{https://ourworldindata.org/}{Our World in Data} that
+publish papers about solutions to world issues.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} list of imports}
+        \PY{k+kn}{import} \PY{n+nn}{scipy} \PY{k}{as} \PY{n+nn}{sp}
+        \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+        \PY{k+kn}{import} \PY{n+nn}{warnings}
+        \PY{n}{warnings}\PY{o}{.}\PY{n}{simplefilter}\PY{p}{(}\PY{n}{action}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ignore}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{category}\PY{o}{=}\PY{n+ne}{FutureWarning}\PY{p}{)}
+        
+        \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k}{as} \PY{n+nn}{pd}
+        \PY{k+kn}{import} \PY{n+nn}{datascience}
+        \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+        \PY{o}{\PYZpc{}}\PY{k}{matplotlib} inline
+        \PY{k+kn}{from} \PY{n+nn}{datascience} \PY{k}{import} \PY{n}{Table}
+        \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k}{as} \PY{n+nn}{sns}
+\end{Verbatim}
+
+
+    We very briefly walked through how to interact with an API (it's very
+simple!) If you are interested, you can look at more in the official
+\texttt{github} page: https://github.com/Kaggle/kaggle-api
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{} kaggle API}
+        \PY{o}{!} kaggle datasets list \PYZhy{}s \PY{l+s+s2}{\PYZdq{}covid vaccination\PYZdq{}} \PYZhy{}\PYZhy{}sort\PYZhy{}by \PY{l+s+s1}{\PYZsq{}hottest\PYZsq{}} \PY{p}{|} head \PYZhy{}10
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+ref                                                title                                              size  lastUpdated          downloadCount  voteCount  usabilityRating  
+-------------------------------------------------  ------------------------------------------------  -----  -------------------  -------------  ---------  ---------------  
+gpreda/covid-world-vaccination-progress            COVID-19 World Vaccination Progress               101KB  2021-03-01 08:15:06          19482        888  1.0              
+fedesoriano/coronavirus-covid19-vaccinations-data  COVID-19 World Vaccination Progress Data            3MB  2021-01-27 06:37:50            186          7  1.0              
+keplaxo/twitter-vaccination-dataset                Twitter Vaccination Dataset                       305MB  2020-04-15 17:33:37            346         13  0.9411765        
+padmajabuggaveeti/covid-vaccination-dataset-2021   COVID VACCINATION DATASET - 2021                   29KB  2021-01-27 11:04:44             75          5  0.5882353        
+mpwolke/cusersmarildownloadsvaccinationcsv         Covid-19 Vaccination Doses Administered            681B  2020-12-28 21:06:44              7          2  1.0              
+teesoong/covid-vaccination-forecast                Covid Vaccination forecast                          2KB  2021-02-27 14:33:03             10          2  0.47058824       
+alechelyar/facebook-antivaccination-dataset        Facebook Anti-Vaccination Dataset                  53MB  2019-04-02 17:24:22            206          8  0.3529412        
+rtatman/animal-bites                               Animal Bites                                       95KB  2017-09-15 17:21:38           3496         60  0.85294116       
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{c+c1}{\PYZsh{} find the files in dataset}
+        \PY{o}{!} kaggle datasets files gpreda/covid\PYZhy{}world\PYZhy{}vaccination\PYZhy{}progress \PYZhy{}v
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+
+
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{c+c1}{\PYZsh{} download the file in csv format}
+        \PY{o}{!} kaggle datasets download \PYZhy{}f country\PYZus{}vaccinations.csv \PYZhy{}p \PY{l+s+s2}{\PYZdq{}./data\PYZdq{}} gpreda/covid\PYZhy{}world\PYZhy{}vaccination\PYZhy{}progress
+        \PY{o}{!} \PY{n+nb}{echo} \PY{l+s+s2}{\PYZdq{}\PYZgt{}\PYZgt{}\PYZgt{} check if data is there\PYZdq{}}
+        \PY{o}{!} ls \PY{l+s+s2}{\PYZdq{}./data\PYZdq{}}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+country\_vaccinations.csv: Skipping, found more recently modified local copy (use --force to force download)
+>>> check if data is there
+country\_vaccinations.csv
+
+    \end{Verbatim}
+
+    Data wrangling and EDA are the most initial steps in our data science
+lifecyle. Most often than not in research, the data is newly collected
+or simulated; no one has had time to write up extensive descriptions of
+the data. Therefore, an important step is getting to know our data.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{c+c1}{\PYZsh{} read data in}
+        \PY{n}{path} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{./data/}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{filename} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{country\PYZus{}vaccinations.csv}\PY{l+s+s2}{\PYZdq{}}
+        \PY{n}{read\PYZus{}path} \PY{o}{=} \PY{n}{path} \PY{o}{+} \PY{n}{filename}
+        \PY{n}{vax} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{n}{read\PYZus{}path}\PY{p}{)}
+        \PY{c+c1}{\PYZsh{} what columns does it have}
+        \PY{c+c1}{\PYZsh{} what are data types}
+        \PY{n}{vax}\PY{o}{.}\PY{n}{dtypes}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}9}]:} country                                 object
+        iso\_code                                object
+        date                                    object
+        total\_vaccinations                     float64
+        people\_vaccinated                      float64
+        people\_fully\_vaccinated                float64
+        daily\_vaccinations\_raw                 float64
+        daily\_vaccinations                     float64
+        total\_vaccinations\_per\_hundred         float64
+        people\_vaccinated\_per\_hundred          float64
+        people\_fully\_vaccinated\_per\_hundred    float64
+        daily\_vaccinations\_per\_million         float64
+        vaccines                                object
+        source\_name                             object
+        source\_website                          object
+        dtype: object
+\end{Verbatim}
+            
+    Now that we have the data, let's load it in and look at what it has to
+offer. To learn more about this dataset, it is often helpful to look at
+its \texttt{README} file or just directly go to \texttt{kaggle} and read
+the descriptions.
+https://www.kaggle.com/gpreda/covid-world-vaccination-progress
+
+The description of columns is usually called a
+\texttt{data\ dictionary}. By reading the documentation we learn that
+this data is directly sourced from John Hopkins University:
+https://github.com/owid/covid-19-data/tree/master/public/data. This is
+sometimes important to know because different organizations,
+institutions, or even individuals often collect and record data
+following different conventions (how are \texttt{NA} values represented,
+how are categorical values stored, etc.). You can explore the data
+source's description a little more closely:
+https://ourworldindata.org/coronavirus-source-data.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{c+c1}{\PYZsh{} how much space does this dataset take?}
+         \PY{n}{display}\PY{p}{(}\PY{n}{vax}\PY{o}{.}\PY{n}{memory\PYZus{}usage}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} how many kilobytes?}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ kB}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{vax}\PY{o}{.}\PY{n}{memory\PYZus{}usage}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}\PY{o}{/}\PY{l+m+mi}{2}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+Index                                    128
+country                                35480
+iso_code                               35480
+date                                   35480
+total_vaccinations                     35480
+people_vaccinated                      35480
+people_fully_vaccinated                35480
+daily_vaccinations_raw                 35480
+daily_vaccinations                     35480
+total_vaccinations_per_hundred         35480
+people_vaccinated_per_hundred          35480
+people_fully_vaccinated_per_hundred    35480
+daily_vaccinations_per_million         35480
+vaccines                               35480
+source_name                            35480
+source_website                         35480
+dtype: int64
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+519.85 kB
+
+    \end{Verbatim}
+
+    A more comprehensive description of the data types is \texttt{df.info}
+function.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{vax}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{p}{)}\PY{p}{;}
+         \PY{c+c1}{\PYZsh{} vax.dim, vix.shape, vix.dtypes}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 4435 entries, 0 to 4434
+Data columns (total 15 columns):
+country                                4435 non-null object
+iso\_code                               4131 non-null object
+date                                   4435 non-null object
+total\_vaccinations                     2916 non-null float64
+people\_vaccinated                      2483 non-null float64
+people\_fully\_vaccinated                1662 non-null float64
+daily\_vaccinations\_raw                 2467 non-null float64
+daily\_vaccinations                     4281 non-null float64
+total\_vaccinations\_per\_hundred         2916 non-null float64
+people\_vaccinated\_per\_hundred          2483 non-null float64
+people\_fully\_vaccinated\_per\_hundred    1662 non-null float64
+daily\_vaccinations\_per\_million         4281 non-null float64
+vaccines                               4435 non-null object
+source\_name                            4435 non-null object
+source\_website                         4435 non-null object
+dtypes: float64(9), object(6)
+memory usage: 519.9+ KB
+
+    \end{Verbatim}
+
+    \texttt{\textquotesingle{}b\textquotesingle{}\ \ \ \ \ \ \ boolean\ \textquotesingle{}i\textquotesingle{}\ \ \ \ \ \ \ (signed)\ integer\ \textquotesingle{}u\textquotesingle{}\ \ \ \ \ \ \ unsigned\ integer\ \textquotesingle{}f\textquotesingle{}\ \ \ \ \ \ \ floating-point\ \textquotesingle{}c\textquotesingle{}\ \ \ \ \ \ \ complex-floating\ point\ \textquotesingle{}O\textquotesingle{}\ \ \ \ \ \ \ (Python)\ objects\ \textquotesingle{}S\textquotesingle{},\ \textquotesingle{}a\textquotesingle{}\ \ (byte-)string\ \textquotesingle{}U\textquotesingle{}\ \ \ \ \ \ \ Unicode\ \textquotesingle{}V\textquotesingle{}\ \ \ \ \ \ \ raw\ data\ (void)}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{c+c1}{\PYZsh{} what are these \PYZdq{}object\PYZdq{} values, let\PYZsq{}s look at \PYZdq{}country\PYZdq{} for example}
+         \PY{n}{countries} \PY{o}{=} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{countries}\PY{o}{.}\PY{n}{dtype} \PY{c+c1}{\PYZsh{} probably not very helpful}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}13}]:} dtype('O')
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n+nb}{type}\PY{p}{(}\PY{n}{countries}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}14}]:} str
+\end{Verbatim}
+            
+    Now that we know what the columns are and (roughly) what they represent,
+let's also look at the table as a whole.
+
+\subsubsection{Q: What is the granularity of this
+dataset?}\label{q-what-is-the-granularity-of-this-dataset}
+
+Discussion: Is it better to have more granularity, or less granularity?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{vax}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}15}]:}    country iso\_code        date  total\_vaccinations  people\_vaccinated  \textbackslash{}
+         0  Albania      ALB  2021-01-10                 0.0                0.0   
+         1  Albania      ALB  2021-01-11                 NaN                NaN   
+         2  Albania      ALB  2021-01-12               128.0              128.0   
+         3  Albania      ALB  2021-01-13               188.0              188.0   
+         4  Albania      ALB  2021-01-14               266.0              266.0   
+         
+            people\_fully\_vaccinated  daily\_vaccinations\_raw  daily\_vaccinations  \textbackslash{}
+         0                      NaN                     NaN                 NaN   
+         1                      NaN                     NaN                64.0   
+         2                      NaN                     NaN                64.0   
+         3                      NaN                    60.0                63.0   
+         4                      NaN                    78.0                66.0   
+         
+            total\_vaccinations\_per\_hundred  people\_vaccinated\_per\_hundred  \textbackslash{}
+         0                            0.00                           0.00   
+         1                             NaN                            NaN   
+         2                            0.00                           0.00   
+         3                            0.01                           0.01   
+         4                            0.01                           0.01   
+         
+            people\_fully\_vaccinated\_per\_hundred  daily\_vaccinations\_per\_million  \textbackslash{}
+         0                                  NaN                             NaN   
+         1                                  NaN                            22.0   
+         2                                  NaN                            22.0   
+         3                                  NaN                            22.0   
+         4                                  NaN                            23.0   
+         
+                   vaccines         source\_name  \textbackslash{}
+         0  Pfizer/BioNTech  Ministry of Health   
+         1  Pfizer/BioNTech  Ministry of Health   
+         2  Pfizer/BioNTech  Ministry of Health   
+         3  Pfizer/BioNTech  Ministry of Health   
+         4  Pfizer/BioNTech  Ministry of Health   
+         
+                                               source\_website  
+         0  https://shendetesia.gov.al/covid19-ministria-e{\ldots}  
+         1  https://shendetesia.gov.al/covid19-ministria-e{\ldots}  
+         2  https://shendetesia.gov.al/covid19-ministria-e{\ldots}  
+         3  https://shendetesia.gov.al/covid19-ministria-e{\ldots}  
+         4  https://shendetesia.gov.al/covid19-ministria-e{\ldots}  
+\end{Verbatim}
+            
+    We have quite a few numerical features, such as
+\texttt{people\_vaccinated}, \texttt{daily\_vaccinations} ... We may be
+generally interested in some statistics.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}20}]:} \PY{c+c1}{\PYZsh{} compute mean}
+         \PY{n+nb}{sum}\PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{o}{/}\PY{n+nb}{len}\PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)} \PY{c+c1}{\PYZsh{} comments?}
+         \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}20}]:} 55316.880168185
+\end{Verbatim}
+            
+    We have some \texttt{NaN} values, this can be due to a few different
+reasons depending on context. But remember: \textbf{If there is no data,
+it does not mean that there is no problem}.
+
+\subsubsection{\texorpdfstring{Q: Is getting rid of data points that
+contain \texttt{NaN}'s a good
+idea?}{Q: Is getting rid of data points that contain NaN's a good idea?}}\label{q-is-getting-rid-of-data-points-that-contain-nans-a-good-idea}
+
+    Now that we know in general: * the (physical) size of data * the
+dimensions of data * what each row / column represents * the data types
+contained in this data * analmolies
+
+Now we can dive into the data values themselves and find out what
+properties this dataset has.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}24}]:} \PY{c+c1}{\PYZsh{} what happens if we get rid of NaN\PYZsq{}s}
+         \PY{n}{vax\PYZus{}clean} \PY{o}{=} \PY{n}{vax}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+         \PY{n}{vax\PYZus{}clean} \PY{o}{=} \PY{n}{vax\PYZus{}clean}\PY{o}{.}\PY{n}{sort\PYZus{}values}\PY{p}{(}\PY{n}{by}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{date}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ascending}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}
+         \PY{n}{display}\PY{p}{(}\PY{n}{vax\PYZus{}clean}\PY{o}{.}\PY{n}{head}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{vax\PYZus{}clean}\PY{o}{.}\PY{n}{shape}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} so getting rid of NaN\PYZsq{}s may not always be the best idea}
+\end{Verbatim}
+
+
+    
+    \begin{verbatim}
+   index        country iso_code        date  total_vaccinations  \
+0   4342  United States      USA  2021-02-27          72806180.0   
+1   3417        Romania      ROU  2021-02-27           1521737.0   
+2    580         Brazil      BRA  2021-02-27           8322042.0   
+3   1981      Indonesia      IDN  2021-02-27           2598535.0   
+4   2794        Morocco      MAR  2021-02-27           3597903.0   
+
+   people_vaccinated  people_fully_vaccinated  daily_vaccinations_raw  \
+0         48435536.0               23698627.0               2352116.0   
+1           905142.0                 616595.0                 15704.0   
+2          6437836.0                1884206.0                220255.0   
+3          1616165.0                 982370.0                149084.0   
+4          3435997.0                 161906.0                173608.0   
+
+   daily_vaccinations  total_vaccinations_per_hundred  \
+0           1645240.0                           21.77   
+1             24351.0                            7.91   
+2            215553.0                            3.92   
+3             91687.0                            0.95   
+4            162387.0                            9.75   
+
+   people_vaccinated_per_hundred  people_fully_vaccinated_per_hundred  \
+0                          14.48                                 7.09   
+1                           4.71                                 3.21   
+2                           3.03                                 0.89   
+3                           0.59                                 0.36   
+4                           9.31                                 0.44   
+
+   daily_vaccinations_per_million  \
+0                          4919.0   
+1                          1266.0   
+2                          1014.0   
+3                           335.0   
+4                          4399.0   
+
+                                       vaccines  \
+0                      Moderna, Pfizer/BioNTech   
+1  Moderna, Oxford/AstraZeneca, Pfizer/BioNTech   
+2                   Oxford/AstraZeneca, Sinovac   
+3                                       Sinovac   
+4         Oxford/AstraZeneca, Sinopharm/Beijing   
+
+                                   source_name  \
+0   Centers for Disease Control and Prevention   
+1                        Government of Romania   
+2  Regional governments via Coronavirus Brasil   
+3                           Ministry of Health   
+4                           Ministry of Health   
+
+                                      source_website  
+0  https://covid.cdc.gov/covid-data-tracker/#vacc...  
+1  https://vaccinare-covid.gov.ro/wp-content/uplo...  
+2                 https://coronavirusbra1.github.io/  
+3                          https://www.kemkes.go.id/  
+4  http://www.covidmaroc.ma/Documents/BULLETIN/27...  
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+(1316, 16)
+
+    \end{Verbatim}
+
+    How many countries are represented?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{np}\PY{o}{.}\PY{n}{unique}\PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} array(['Albania', 'Algeria', 'Andorra', 'Anguilla', 'Argentina',
+                'Australia', 'Austria', 'Azerbaijan', 'Bahrain', 'Bangladesh',
+                'Barbados', 'Belarus', 'Belgium', 'Bermuda', 'Bolivia', 'Brazil',
+                'Bulgaria', 'Cambodia', 'Canada', 'Cayman Islands', 'Chile',
+                'China', 'Colombia', 'Costa Rica', 'Croatia', 'Cyprus', 'Czechia',
+                'Denmark', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador',
+                'England', 'Estonia', 'Faeroe Islands', 'Falkland Islands',
+                'Finland', 'France', 'Germany', 'Gibraltar', 'Greece', 'Greenland',
+                'Guernsey', 'Guyana', 'Hungary', 'Iceland', 'India', 'Indonesia',
+                'Iran', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Japan',
+                'Jersey', 'Kazakhstan', 'Kuwait', 'Latvia', 'Lebanon',
+                'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao', 'Maldives',
+                'Malta', 'Mauritius', 'Mexico', 'Monaco', 'Montenegro', 'Morocco',
+                'Myanmar', 'Nepal', 'Netherlands', 'New Zealand',
+                'Northern Cyprus', 'Northern Ireland', 'Norway', 'Oman',
+                'Pakistan', 'Panama', 'Paraguay', 'Peru', 'Poland', 'Portugal',
+                'Qatar', 'Romania', 'Russia', 'Saint Helena', 'Saudi Arabia',
+                'Scotland', 'Senegal', 'Serbia', 'Seychelles', 'Singapore',
+                'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain',
+                'Sri Lanka', 'Sweden', 'Switzerland', 'Trinidad and Tobago',
+                'Turkey', 'Turks and Caicos Islands', 'Ukraine',
+                'United Arab Emirates', 'United Kingdom', 'United States',
+                'Venezuela', 'Wales', 'Zimbabwe'], dtype=object)
+\end{Verbatim}
+            
+    How much data do we have on each country, are they equal?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}30}]:} Lithuania         82
+         Scotland          76
+         United Kingdom    76
+         Wales             76
+         England           76
+                           ..
+         Senegal            5
+         South Korea        3
+         Ukraine            3
+         Saint Helena       1
+         Greenland          1
+         Name: country, Length: 112, dtype: int64
+\end{Verbatim}
+            
+    What is the range of dates?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}33}]:} \PY{c+c1}{\PYZsh{} these achieves the same goal}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{the dates are from }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ to }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{amin}\PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{np}\PY{o}{.}\PY{n}{amax}\PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} or you can do this}
+         \PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} so, about 3 months worth of data}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+the dates are from 2020-12-08 to 2021-02-27
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}33}]:} ('2020-12-08', '2021-02-27')
+\end{Verbatim}
+            
+    How is the world vaccination progressing? Namely, on average, how many
+people get vaccinated everyday?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{c+c1}{\PYZsh{} these achieves the same goal}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{daily vaccination average: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} or you can do this}
+         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{daily vaccination average: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} that\PYZsq{}s a bit slow, but we are making progress}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+daily vaccination average: 55316.880168185
+daily vaccination average: 55316.880168185
+
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} \PY{c+c1}{\PYZsh{} you can do numerical computations on pd.Series directly}
+        \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{people\PYZus{}fully\PYZus{}vaccinated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{/} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+    Here is a quick way: \texttt{df.describe} gives you some quick
+statistics of your numerical data. It has a few advantages, but need to
+be careful about interpretability.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{vax}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}35}]:}        total\_vaccinations  people\_vaccinated  people\_fully\_vaccinated  \textbackslash{}
+         count        2.916000e+03       2.483000e+03             1.662000e+03   
+         mean         1.709487e+06       1.481442e+06             4.888581e+05   
+         std          5.774372e+06       4.646374e+06             1.899838e+06   
+         min          0.000000e+00       0.000000e+00             1.000000e+00   
+         25\%          3.154575e+04       2.799900e+04             1.119425e+04   
+         50\%          2.049345e+05       1.822800e+05             5.062800e+04   
+         75\%          8.565680e+05       7.471645e+05             2.607428e+05   
+         max          7.280618e+07       4.843554e+07             2.369863e+07   
+         
+                daily\_vaccinations\_raw  daily\_vaccinations  \textbackslash{}
+         count            2.467000e+03        4.281000e+03   
+         mean             7.517774e+04        5.531688e+04   
+         std              2.111072e+05        1.744120e+05   
+         min             -5.001200e+04        1.000000e+00   
+         25\%              2.282000e+03        1.121000e+03   
+         50\%              1.183300e+04        5.857000e+03   
+         75\%              5.366500e+04        2.704700e+04   
+         max              2.352116e+06        1.916190e+06   
+         
+                total\_vaccinations\_per\_hundred  people\_vaccinated\_per\_hundred  \textbackslash{}
+         count                     2916.000000                    2483.000000   
+         mean                         7.078261                       5.751832   
+         std                         13.147480                       9.446641   
+         min                          0.000000                       0.000000   
+         25\%                          0.620000                       0.600000   
+         50\%                          2.735000                       2.530000   
+         75\%                          6.675000                       5.200000   
+         max                        106.530000                      67.410000   
+         
+                people\_fully\_vaccinated\_per\_hundred  daily\_vaccinations\_per\_million  
+         count                          1662.000000                     4281.000000  
+         mean                              2.262515                     2404.288951  
+         std                               5.501138                     4378.201585  
+         min                               0.000000                        0.000000  
+         25\%                               0.212500                      321.000000  
+         50\%                               0.840000                     1064.000000  
+         75\%                               1.935000                     2190.000000  
+         max                              39.110000                    54264.000000  
+\end{Verbatim}
+            
+    Now we understand better the numerical properties of our data. We can
+start to ask some more complex questions.
+
+    \subsection{Q: Who's not vaccinated?}\label{q-whos-not-vaccinated}
+
+    \[
+\text{(Total number of people vaccinated per hundred) } =\frac{(\text{Total number of people fully vaccinated})}{(\text{Total population up to the date in the country})} \times 100\%
+\]
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}population}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{people\PYZus{}fully\PYZus{}vaccinated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{/} \PY{p}{(}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}vaccinations\PYZus{}per\PYZus{}hundred}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{/} \PY{l+m+mi}{100}\PY{p}{)}
+         \PY{n}{vax}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}population}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}37}]:}       country  total\_population
+         23    Albania      5.000000e+03
+         30    Albania      1.095000e+06
+         38    Albania      1.018333e+06
+         39    Albania      5.554545e+05
+         43    Albania      2.847826e+05
+         {\ldots}       {\ldots}               {\ldots}
+         4420    Wales      1.705384e+05
+         4421    Wales      1.993241e+05
+         4422    Wales      2.296220e+05
+         4423    Wales      2.569384e+05
+         4424    Wales      2.792505e+05
+         
+         [1654 rows x 2 columns]
+\end{Verbatim}
+            
+    Now we can see who's not vaccinated in each country.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{people\PYZus{}unvaccinated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{total\PYZus{}population}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{\PYZhy{}} \PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{people\PYZus{}fully\PYZus{}vaccinated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{n}{vax}\PY{p}{[}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{people\PYZus{}unvaccinated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{]}\PY{o}{.}\PY{n}{dropna}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}38}]:}       country  people\_unvaccinated
+         23    Albania         4.999000e+03
+         30    Albania         1.094562e+06
+         38    Albania         1.017722e+06
+         39    Albania         5.548435e+05
+         43    Albania         2.841276e+05
+         {\ldots}       {\ldots}                  {\ldots}
+         4420    Wales         1.208094e+05
+         4421    Wales         1.400451e+05
+         4422    Wales         1.597710e+05
+         4423    Wales         1.768764e+05
+         4424    Wales         1.901975e+05
+         
+         [1654 rows x 2 columns]
+\end{Verbatim}
+            
+    We can even ask further questions as to which country is most recently,
+most vaccinated, and most un-vaccinated?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}39}]:} \PY{c+c1}{\PYZsh{} let\PYZsq{}s move to the same recorded day}
+         \PY{n}{vax\PYZus{}curr} \PY{o}{=} \PY{n}{vax}\PY{p}{[}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{2021\PYZhy{}02\PYZhy{}26}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{vax}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{n}{vax\PYZus{}curr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{people\PYZus{}fully\PYZus{}vaccinated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{idxmax}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}40}]:} country                                                                    United States
+         iso\_code                                                                             USA
+         date                                                                          2021-02-26
+         total\_vaccinations                                                           7.04541e+07
+         people\_vaccinated                                                            4.71842e+07
+         people\_fully\_vaccinated                                                      2.26134e+07
+         daily\_vaccinations\_raw                                                       2.17995e+06
+         daily\_vaccinations                                                           1.55272e+06
+         total\_vaccinations\_per\_hundred                                                     21.07
+         people\_vaccinated\_per\_hundred                                                      14.11
+         people\_fully\_vaccinated\_per\_hundred                                                 6.76
+         daily\_vaccinations\_per\_million                                                      4643
+         vaccines                                                        Moderna, Pfizer/BioNTech
+         source\_name                                   Centers for Disease Control and Prevention
+         source\_website                         https://covid.cdc.gov/covid-data-tracker/\#vacc{\ldots}
+         total\_population                                                             1.07325e+08
+         people\_unvaccinated                                                          8.47116e+07
+         Name: 4341, dtype: object
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{n}{vax}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{n}{vax\PYZus{}curr}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{people\PYZus{}fully\PYZus{}vaccinated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{idxmin}\PY{p}{]}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}41}]:} country                                                                      Isle of Man
+         iso\_code                                                                             IMN
+         date                                                                          2021-02-26
+         total\_vaccinations                                                                 19884
+         people\_vaccinated                                                                  13600
+         people\_fully\_vaccinated                                                             6284
+         daily\_vaccinations\_raw                                                              1089
+         daily\_vaccinations                                                                   391
+         total\_vaccinations\_per\_hundred                                                     23.38
+         people\_vaccinated\_per\_hundred                                                      15.99
+         people\_fully\_vaccinated\_per\_hundred                                                 7.39
+         daily\_vaccinations\_per\_million                                                      4598
+         vaccines                                             Oxford/AstraZeneca, Pfizer/BioNTech
+         source\_name                                                       Isle of Man Government
+         source\_website                         https://covid19.gov.im/general-information/cov{\ldots}
+         total\_population                                                                 26877.7
+         people\_unvaccinated                                                              20593.7
+         Name: 2084, dtype: object
+\end{Verbatim}
+            
+    There are many more topics we can explore (feel free to try to answer
+these on your own: How effective are vaccines? What's the busiest day,
+is there a pattern?). Notice that all we are doing are just computing
+simple statistics, but the key is to learn about our data in that: (1)
+get familiar with manipulating this dataset and (2) explore the
+\textbf{scope} and \textbf{temporality} of this dataset.
+
+    \section{Visualizing Our Data}\label{visualizing-our-data}
+
+Depending on our needs and whether the data is categorical / numerical,
+we can have different ways to look at data. We can understand the
+dataset in a much more direct and intuitive way by visualizing. We will
+discuss more in the upcoming lectures.
+
+Today, we will be working with \texttt{datascience} which provides some
+useful visualization tools, and see a few examples of more standard
+packages such as \texttt{pandas}, \texttt{matplotlib} and
+\texttt{seaborn}.
+
+    \subsection{Q: Is the vaccination rate in the United States looking
+up?}\label{q-is-the-vaccination-rate-in-the-united-states-looking-up}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}43}]:} \PY{c+c1}{\PYZsh{} focus on the US}
+         \PY{n}{us\PYZus{}vax} \PY{o}{=} \PY{n}{vax}\PY{p}{[}\PY{n}{vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{country}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{==} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{United States}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
+         \PY{n}{us\PYZus{}vax}\PY{o}{.}\PY{n}{shape}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}43}]:} (70, 17)
+\end{Verbatim}
+            
+    What is a good way to understand the temporal trend of a numerical
+value?
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{n}{us\PYZus{}daily\PYZus{}trend} \PY{o}{=} \PY{n}{Table}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{with\PYZus{}columns}\PY{p}{(}\PY{p}{[}
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} 
+             \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+         \PY{p}{]}\PY{p}{)}
+         
+         \PY{c+c1}{\PYZsh{} plot}
+         \PY{c+c1}{\PYZsh{}help(us\PYZus{}daily\PYZus{}trend.plot)}
+         \PY{n}{us\PYZus{}daily\PYZus{}trend}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{rotation} \PY{o}{=} \PY{l+m+mi}{45}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_48_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    How to do this in \texttt{pandas}? Look at \texttt{pd.DataFrame().plot}.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}49}]:} \PY{n}{us\PYZus{}vax}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{rot}\PY{o}{=}\PY{l+m+mi}{90}\PY{p}{)}\PY{p}{;}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_50_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    We can get even more detailed plots with \texttt{matplotlib}.
+
+    Here are a few \texttt{stackexchange} posts I consulted. Most often than
+not, your question has been answered.
+
+\begin{itemize}
+\tightlist
+\item
+  https://stackoverflow.com/questions/33382619/plot-a-horizontal-line-using-matplotlib
+\item
+  https://stackoverflow.com/questions/23248435/fill-between-two-vertical-lines-in-matplotlib
+\item
+  https://stackoverflow.com/questions/18089667/how-to-estimate-how-much-memory-a-pandas-dataframe-will-need/47751572
+\item
+  https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas
+\end{itemize}
+
+The documentations are also good places to go to, they usually contain
+useful examples.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{plt}\PY{o}{.}\PY{n}{figure}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{)}\PY{p}{)}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;} \PY{n}{plt}\PY{o}{.}\PY{n}{ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{number of vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;} \PY{n}{plt}\PY{o}{.}\PY{n}{title}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily vaccination trend}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;} 
+         \PY{c+c1}{\PYZsh{} change date to datetime}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{to\PYZus{}datetime}\PY{p}{(}\PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n+nb}{format} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{Y\PYZhy{}}\PY{l+s+s1}{\PYZpc{}}\PY{l+s+s1}{m\PYZhy{}}\PY{l+s+si}{\PYZpc{}d}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{dt}\PY{o}{.}\PY{n}{date}\PY{p}{,} \PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PYZbs{}
+                  \PY{n}{marker}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{trend}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{xticks}\PY{p}{(}\PY{n}{rotation} \PY{o}{=} \PY{l+m+mi}{45}\PY{p}{)}\PY{p}{;} \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{n}{loc}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{upper left}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;} \PY{n}{plt}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}\PY{p}{;}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{axhline}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{lw}\PY{o}{=}\PY{l+m+mi}{2}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mean level}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{;}
+         
+         \PY{n}{plt}\PY{o}{.}\PY{n}{fill\PYZus{}betweenx}\PY{p}{(}\PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{daily\PYZus{}vaccinations}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{30}\PY{p}{]}\PY{p}{,} \PYZbs{}
+                           \PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{37}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{yellow}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{high risk period}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{list}\PY{p}{(}\PY{n}{us\PYZus{}vax}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{date}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{36}\PY{p}{]}\PY{p}{,} \PY{l+m+mi}{1200000}\PY{p}{,} \PY{n}{s}\PY{o}{=}\PY{l+m+mi}{250}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{purple}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{marker}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{o}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{use}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{seaborn\PYZhy{}dark}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{;} \PY{n}{plt}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}\PY{p}{;}
+         \PY{n}{plt}\PY{o}{.}\PY{n}{rcParams}\PY{o}{.}\PY{n}{update}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{font.size}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:} \PY{l+m+mi}{18}\PY{p}{\PYZcb{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_53_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

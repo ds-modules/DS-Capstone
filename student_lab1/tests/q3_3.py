@@ -1,0 +1,10 @@
+test = {   'name': 'q3_3',
+    'points': 1,
+    'suites': [   {   'cases': [   {'code': '>>> assert len(qualified_cereals.index) == 3\n', 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert np.count_nonzero(qualified_cereals['protein'] >= 4) == 3\n", 'hidden': False, 'locked': False},
+                                   {'code': ">>> assert np.count_nonzero(qualified_cereals['fiber'] > 3) == 3\n", 'hidden': False, 'locked': False},
+                                   {'code': '>>> assert type(qualified_cereals) == type(pd.DataFrame())\n', 'hidden': False, 'locked': False}],
+                      'scored': True,
+                      'setup': '',
+                      'teardown': '',
+                      'type': 'doctest'}]}
